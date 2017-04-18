@@ -1,9 +1,9 @@
 #include <iostream>
 using namespace std;
 
-class closestPoints {
+class cPoints {
 public:
-  closestPoints() {
+  cPoints() {
 
   }
   

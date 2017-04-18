@@ -3,7 +3,7 @@
 using namespace std;
 
 int main() {
-  closestPoints f;
+  cPoints f;
   f.print();
   return 0;
 }
