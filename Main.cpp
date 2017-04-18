@@ -1,7 +1,9 @@
 #include <iostream>
+#include "cPoint.h"
 using namespace std;
 
 int main() {
-  cout << "hello" << endl;
+  closestPoints f;
+  f.print();
   return 0;
 }
