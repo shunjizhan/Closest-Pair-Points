@@ -4,6 +4,9 @@ using namespace std;
 
 int main() {
   cPoints f;
-  f.print();
+  f.add(1, 1);
+  f.add(2, 1);
+  f.add(1, 15);
+  f.printPoints();
   return 0;
 }
