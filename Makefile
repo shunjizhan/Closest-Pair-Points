@@ -1,5 +1,8 @@
 CXX=clang++
 # CXX=g++
+all:
+	$(MAKE) clean
+	$(MAKE) run
 
 run: Main.o
 	${CXX} Main.o -o closest-point

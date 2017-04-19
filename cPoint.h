@@ -29,13 +29,16 @@ public:
     for (vector<point>::iterator it = begin (allPoints); it != end (allPoints); ++it) {
       it -> print();
     }
+    cout << "n = " << n << endl;
   }
   
   void add(point p) {
     allPoints.push_back(p);
+    n++;
   }
 
   void add(int x, int y) {
     allPoints.push_back(point(x, y));
+    n++;
   }
 };
