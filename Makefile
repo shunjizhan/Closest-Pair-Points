@@ -1,5 +1,6 @@
 CXX=clang++
 # CXX=g++
+
 all:
 	$(MAKE) clean
 	$(MAKE) run

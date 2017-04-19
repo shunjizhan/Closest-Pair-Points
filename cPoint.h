@@ -12,7 +12,7 @@ struct point {
   }
 
   void print() {
-    cout << x << ", " << y << endl;
+    cout << "(" << x << ", " << y << ")" << endl;
   }
 };
 
@@ -21,8 +21,8 @@ public:
   int n;
   vector<point> allPoints;
 
-  cPoints() {
-    n = 0;
+  cPoints(int n) {
+    this->n = n;
   }
 
   void printPoints() {
@@ -34,11 +34,11 @@ public:
   
   void add(point p) {
     allPoints.push_back(p);
-    n++;
+    // n++;
   }
 
   void add(int x, int y) {
     allPoints.push_back(point(x, y));
-    n++;
+    // n++;
   }
 };
