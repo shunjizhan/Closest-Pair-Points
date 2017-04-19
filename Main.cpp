@@ -23,6 +23,7 @@ int main() {
   }
 
   cpoints.printPoints();
+  cpoints.bruteForce();
 
   return 0;
 }
