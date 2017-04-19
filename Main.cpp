@@ -13,16 +13,17 @@ int main() {
   cin >> n;
   cPoints cpoints(n);
 
-  while (true) {
-    cout << "enter next point: ";
+  for (int i = 0; i < n; i++) {
+    cout << "enter the " << i+1 <<"th point: ";
     cin >> x >> y;
     intX = atoi(x.c_str());
     intY = atoi(y.c_str());
 
-    cout << "you entered: " << intX << ", " << intY << endl;
+    cpoints.add(intX, intY);
   }
 
   cpoints.printPoints();
+
   return 0;
 }
 
