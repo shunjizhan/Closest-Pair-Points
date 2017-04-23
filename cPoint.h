@@ -36,7 +36,7 @@ struct Point {
     this->y = 0;
   }
 
-  Point(double x, double  y) {
+  Point(double x, double y) {
     this->x = x;
     this->y = y;
   }
@@ -90,6 +90,10 @@ public:
 
   vector<double> bruteForce(vector<Point> points) {
     vector<double> result = initialResult(); 
+    if (points.size() <= 1) {
+      return result;
+    }
+
     double comparison = 0.0;
     double distance;
     double minDistance = 999999999.9;
@@ -127,10 +131,7 @@ public:
     // cout << "points size = " << points.size() << endl;
     vector<double> result = initialResult();
 
-    if (points.size() < 2) { 
-      cout << "error!" << endl; 
-      return result;
-    } else if (points.size() < 5) { 
+    if (points.size() < 5) { 
       return bruteForce(points);
     } else {
       vector<Point> left;
@@ -145,8 +146,8 @@ public:
         }
       }
 
-      cout << "left size = " << left.size() << endl;
-      cout << "right size = " << right.size() << endl;
+      // cout << "left size = " << left.size() << endl;
+      // cout << "right size = " << right.size() << endl;
 
       vector<double> leftResult = DAC(left);
       vector<double> rightResult = DAC(right);
@@ -162,8 +163,8 @@ public:
       double leftBound = halfX - min;
       double rightBound = halfX + min;
 
-      cout << "leftBound = " << leftBound << endl;
-      cout << "rightBound = " << rightBound << endl;
+      // cout << "leftBound = " << leftBound << endl;
+      // cout << "rightBound = " << rightBound << endl;
 
       for (int m = 0; m < points.size(); m++) {
         Point p1 = points.at(m);
@@ -193,7 +194,7 @@ public:
         }
       }
 
-      cout << "count = " << count << endl;
+      // cout << "count = " << count << endl;
 
       double newSum = leftResult[4] + rightResult[4] + count;
       leftResult[4] = newSum;

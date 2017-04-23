@@ -16,7 +16,7 @@ void printResult(vector<double> v) {
   // cout << "closest points: " << endl;
   cout << v.at(0) << " " << v.at(1) << " " << v.at(2) << " " << v.at(3) << endl;
   // cout << "comparisons: " << endl;
-  cout << v.at(4) << endl;
+  cout << (int) v.at(4) << endl;
 }
 
 int main() {
