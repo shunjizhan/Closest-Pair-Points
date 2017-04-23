@@ -6,7 +6,7 @@
 using namespace std;
 
 int main() {
-  int n, intX, intY;
+  double n, intX, intY;
   string x, y;
 
   cout << "enter point number: " << endl;
@@ -16,13 +16,13 @@ int main() {
   for (int i = 0; i < n; i++) {
     cout << "enter the " << i+1 <<"th point: ";
     cin >> x >> y;
-    intX = atoi(x.c_str());
-    intY = atoi(y.c_str());
+    intX = atof(x.c_str());
+    intY = atof(y.c_str());
 
     cpoints.add(intX, intY);
   }
 
-  // cpoints.printPoints();
+  cpoints.printPoints();
   cpoints.bruteForce();
   cpoints.DAC();
 

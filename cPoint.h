@@ -4,15 +4,15 @@
 using namespace std;
 
 struct Point {
-  int x;
-  int y;
+  double x;
+  double y;
 
   Point() {
     this->x = 0;
     this->y = 0;
   }
 
-  Point(int x, int  y) {
+  Point(double x, double  y) {
     this->x = x;
     this->y = y;
   }
@@ -24,10 +24,10 @@ struct Point {
 
 class cPoints {
 public:
-  int n;
+  double n;
   vector<Point> allPoints;
 
-  cPoints(int n) {
+  cPoints(double n) {
     this->n = n;
   }
 
@@ -42,7 +42,7 @@ public:
     allPoints.push_back(p);
   }
 
-  void add(int x, int y) {
+  void add(double x, double y) {
     allPoints.push_back(Point(x, y));
   }
 
@@ -51,7 +51,7 @@ public:
   }
 
   void bruteForce() {
-    int comparison = 0;
+    double comparison = 0;
     Point temp1, temp2;
     Point p1;
     Point p2;
@@ -78,12 +78,29 @@ public:
     cout << comparison << endl;
   }
 
-  void DAC() {
+  vector<double> DAC() {
+    // x0 y0 x1 y1 comparisons 
     return DAC(allPoints);
   }
 
-  void DAC(vector<Point> points) {
-    
+  vector<double> DAC(vector<Point> points) {
+    vector<double> result;
+    result.push_back(0.0);
+    result.push_back(0.0);
+    result.push_back(0.0);
+    result.push_back(-999999999.9);
+
+    if (points.size() < 2) { 
+      cout << "error!"; 
+      return result;
+    }
+
+    double comparison = 0;
+    Point temp1, temp2;
+    double x0, y0, x1, y1;
+    double distance;
+    double minDistance = 999999999.9;
+    return result;
   }
 
 };
