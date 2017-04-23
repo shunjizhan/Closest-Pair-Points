@@ -70,7 +70,7 @@ public:
     allPoints.push_back(Point(x, y));
   }
 
-  float getDistance(Point p1, Point p2) {
+  double getDistance(Point p1, Point p2) {
     return sqrt(abs(p1.x - p2.x) + abs(p1.y - p2.y));
   }
 
@@ -91,14 +91,14 @@ public:
   vector<double> bruteForce(vector<Point> points) {
     vector<double> result = initialResult(); 
     double comparison = 0.0;
-    float distance;
-    float minDistance = 999999999.9;
+    double distance;
+    double minDistance = 999999999.9;
     Point temp1, temp2, p1, p2;
 
-    for(vector<Point>::iterator it = points.begin(); it != points.end(); ++it) {
-      temp1 = *it;
-      for(vector<Point>::iterator it2 = it; it2 != points.end(); ++it2) {
-        temp2 = *it2;
+    for(int i = 0; i < points.size(); i++) {
+      for(int j = i + 1; j < points.size(); j++) {
+        temp1 = points.at(i);
+        temp2 = points.at(j);
         distance = getDistance(temp1, temp2);
 
         // cout << temp1.x << " " << temp1.y << " " << temp2.x << " " << temp2.y << " " << distance << endl;
