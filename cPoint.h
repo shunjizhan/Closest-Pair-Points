@@ -56,7 +56,7 @@ public:
   }
 
   void printPoints() {
-    for (vector<Point>::iterator it = begin (allPoints); it != end (allPoints); ++it) {
+    for (vector<Point>::iterator it = std::begin (allPoints); it != std::end (allPoints); ++it) {
       it -> print();
     }
     cout << "n = " << n << endl;
