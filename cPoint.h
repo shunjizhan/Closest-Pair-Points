@@ -85,7 +85,7 @@ public:
 
     for(vector<Point>::iterator it = points.begin(); it != points.end(); ++it) {
       temp1 = *it;
-      for(vector<Point>::iterator it2 = points.begin(); it2 != points.end(); ++it2) {
+      for(vector<Point>::iterator it2 = it; it2 != points.end(); ++it2) {
         temp2 = *it2;
         distance = getDistance(temp1, temp2);
 
