@@ -9,12 +9,9 @@ run: Main.o
 	${CXX} Main.o -o closest-point
 	./closest-point
 
-test:
-	$(MAKE) test1
-	$(MAKE) test2
-	$(MAKE) test3
-	$(MAKE) test4
-	$(MAKE) test5
+test: Main.o
+	${CXX} Main.o -o closest-point
+	./closest-point < tests/test1
 
 test1: Main.o
 	${CXX} Main.o -o closest-point

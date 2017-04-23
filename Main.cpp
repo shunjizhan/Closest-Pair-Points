@@ -38,11 +38,11 @@ int main() {
 
   // cpoints.printPoints();
   vector<double> brute = cpoints.bruteForce();
-  // vector<double> dac = cpoints.DAC();
+  vector<double> dac = cpoints.DAC();
 
   printResult(brute);
-  printResult(brute);
-  // printResult(dac);
+  // printResult(brute);
+  printResult(dac);
 
   return 0;
 }

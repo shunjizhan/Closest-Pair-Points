@@ -10,16 +10,18 @@ vector<double> initialResult() {
   result.push_back(0.0);
   result.push_back(0.0);
   result.push_back(-999999999.9);
+  result.push_back(0);
   return result;
 }
 
-vector<double> updateVector(vector<double> v, double x0, double y0, double x1, double y1, double n) {
+vector<double> updateVector(vector<double> v, double x0, double y0, double x1, double y1, double n, double minD) {
   v.clear();
   v.push_back(x0);
   v.push_back(y0);
   v.push_back(x1);
   v.push_back(y1);
   v.push_back(n);
+  v.push_back(minD);
 
   return v;
 }
@@ -71,6 +73,15 @@ public:
     return sqrt(abs(p1.x - p2.x) + abs(p1.y - p2.y));
   }
 
+  double findhalf(vector<Point> v) {
+    double sum = 0;
+    int size = v.size();
+    for (int i = 0; i < size; i++) {
+      sum += v.at(i).x;
+    }
+    return sum / size;
+  }
+
   /***** brute force *****/
   vector<double> bruteForce() {
     return bruteForce(this -> allPoints);
@@ -100,7 +111,7 @@ public:
       }
     }
 
-    result = updateVector(result, p1.x, p1.y, p2.x, p2.y, comparison);
+    result = updateVector(result, p1.x, p1.y, p2.x, p2.y, comparison, minDistance);
     // cout << "min distance = " << minDistance << endl;
 
     return result;
@@ -108,26 +119,48 @@ public:
 
   /***** divide and conqure *****/
   vector<double> DAC() {
-    // x0 y0 x1 y1 comparisons 
+    // x0 y0 x1 y1 comparisons minDistance
     return DAC(this -> allPoints);
   }
 
   vector<double> DAC(vector<Point> points) {
+    // cout << "points size = " << points.size() << endl;
     vector<double> result = initialResult();
 
     if (points.size() < 2) { 
-      cout << "error!"; 
+      cout << "error!" << endl; 
       return result;
-    } else if (points.size() < 10) { 
+    } else if (points.size() < 5) { 
       return bruteForce(points);
+    } else {
+      vector<Point> left;
+      vector<Point> right;
+      double halfX = findhalf(points);
+
+      for (int i = 0; i < points.size(); i++) {
+        if (points.at(i).x < halfX) {
+          left.push_back(points.at(i));
+        } else {
+          right.push_back(points.at(i));
+        }
+      }
+
+      cout << "left size = " << left.size() << endl;
+      cout << "right size = " << right.size() << endl;
+
+      vector<double> leftResult = DAC(left);
+      vector<double> rightResult = DAC(right);
+
+      double newSum = leftResult[4] + rightResult[4];
+      leftResult[4] = newSum;
+      rightResult[4] = newSum;
+
+      double leftMin = leftResult.at(5);
+      double rightMin = rightResult.at(5);
+
+      return leftMin > rightMin ? rightResult : leftResult;
+
     }
-
-    double comparison = 0;
-    double x0, y0, x1, y1;
-    double distance;
-    double minDistance = 999999999.9;
-
-    return result;
   }
 
 };
