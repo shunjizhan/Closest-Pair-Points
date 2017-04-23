@@ -28,7 +28,7 @@ int main() {
   cPoints cpoints(n);
 
   for (int i = 0; i < n; i++) {
-    cout << "enter the " << i+1 <<"th point: ";
+    // cout << "enter the " << i+1 <<"th point: ";
     cin >> x >> y;
     intX = atof(x.c_str());
     intY = atof(y.c_str());
@@ -36,12 +36,12 @@ int main() {
     cpoints.add(intX, intY);
   }
 
-  cpoints.printPoints();
+  // cpoints.printPoints();
   vector<double> brute = cpoints.bruteForce();
   vector<double> dac = cpoints.DAC();
 
   printResult(brute);
-  // printResult(dac);
+  printResult(dac);
 
   return 0;
 }

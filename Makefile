@@ -12,5 +12,9 @@ run: Main.o
 clean:
 	/bin/rm -f *.o closest-point
 
+test: Main.o
+	${CXX} Main.o -o closest-point
+	./closest-point < tests/test1
+
 Main.o: Main.cpp
 	${CXX} -c Main.cpp

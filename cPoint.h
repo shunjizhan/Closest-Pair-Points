@@ -68,7 +68,7 @@ public:
   }
 
   double getDistance(Point p1, Point p2) {
-    return sqrt((p1.x - p2.x) + (p1.y - p2.y));
+    return sqrt(abs(p1.x - p2.x) + abs(p1.y - p2.y));
   }
 
   /***** brute force *****/
@@ -88,6 +88,9 @@ public:
       for(vector<Point>::iterator it2 = points.begin(); it2 != points.end(); ++it2) {
         temp2 = *it2;
         distance = getDistance(temp1, temp2);
+
+        cout << temp1.x << " " << temp1.y << " " << temp2.x << " " << temp2.y << " " << distance << endl;
+
         comparison += 1.0;
         if (distance < minDistance && distance != 0) {
           minDistance = distance;
@@ -98,6 +101,7 @@ public:
     }
 
     result = updateVector(result, p1.x, p1.y, p2.x, p2.y, comparison);
+    // cout << "min distance = " << minDistance << endl;
 
     return result;
   }
