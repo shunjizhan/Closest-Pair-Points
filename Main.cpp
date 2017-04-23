@@ -19,17 +19,7 @@ void printResult(vector<double> v) {
   double x1 = v.at(2);
   double y1 = v.at(3);
 
-  // cout << "!!!!!" << (y1 - floor(y1) < b) << endl;
-  if ( x0 - floor(x0) < b
-    && x1 - floor(x1) < b
-    && y0 - floor(y0) < b
-    && y1 - floor(y1) < b ) {
-    cout << "!!!!!!!!!!" << endl;
-    cout << (int) x0 << " " << (int) y0 << " " << (int) x1 << " " << (int) y1 << endl;
-  } else {
-    cout << x0 << " " << y0 << " " << x1 << " " << y1 << endl;
-  }
-  
+  cout << x0 << " " << y0 << " " << x1 << " " << y1 << endl;
   cout << (int) v.at(4) << endl;
 }
 
