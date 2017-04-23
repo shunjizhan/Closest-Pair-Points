@@ -3,6 +3,27 @@
 #include <cmath>
 using namespace std;
 
+vector<double> initialResult() {
+  vector<double> result;
+  result.push_back(0.0);
+  result.push_back(0.0);
+  result.push_back(0.0);
+  result.push_back(0.0);
+  result.push_back(-999999999.9);
+  return result;
+}
+
+vector<double> updateVector(vector<double> v, double x0, double y0, double x1, double y1, double n) {
+  v.clear();
+  v.push_back(x0);
+  v.push_back(y0);
+  v.push_back(x1);
+  v.push_back(y1);
+  v.push_back(n);
+
+  return v;
+}
+
 struct Point {
   double x;
   double y;
@@ -50,20 +71,19 @@ public:
     return sqrt((p1.x - p2.x) + (p1.y - p2.y));
   }
 
-  void bruteForce() {
-    double comparison = 0;
-    Point temp1, temp2;
-    Point p1;
-    Point p2;
+  vector<double> bruteForce() {
+    vector<double> result = initialResult(); 
+    double comparison = 0.0;
     double distance;
     double minDistance = 999999999.9;
+    Point temp1, temp2, p1, p2;
 
     for(vector<Point>::iterator it = allPoints.begin(); it != allPoints.end(); ++it) {
       temp1 = *it;
       for(vector<Point>::iterator it2 = allPoints.begin(); it2 != allPoints.end(); ++it2) {
         temp2 = *it2;
         distance = getDistance(temp1, temp2);
-        comparison++;
+        comparison += 1.0;
         if (distance < minDistance && distance != 0) {
           minDistance = distance;
           p1 = temp1;
@@ -72,10 +92,9 @@ public:
       }
     }
 
-    cout << "closest points: " << endl;
-    cout << p1.x << " " << p1.y << " " << p2.x << " " << p2.y << endl;
-    cout << "comparisons: " << endl;
-    cout << comparison << endl;
+    result = updateVector(result, p1.x, p1.y, p2.x, p2.y, comparison);
+
+    return result;
   }
 
   vector<double> DAC() {
@@ -84,12 +103,7 @@ public:
   }
 
   vector<double> DAC(vector<Point> points) {
-    vector<double> result;
-    result.push_back(0.0);
-    result.push_back(0.0);
-    result.push_back(0.0);
-    result.push_back(0.0);
-    result.push_back(-999999999.9);
+    vector<double> result = initialResult();
 
     if (points.size() < 2) { 
       cout << "error!"; 
@@ -105,7 +119,6 @@ public:
     }
 
     double comparison = 0;
-    Point temp1, temp2;
     double x0, y0, x1, y1;
     double distance;
     double minDistance = 999999999.9;
@@ -114,6 +127,7 @@ public:
   }
 
 };
+
 
 
 

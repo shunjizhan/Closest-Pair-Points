@@ -5,11 +5,18 @@
 #include "cPoint.h"
 using namespace std;
 
-void printVector(vector<double> v) {
-  cout << "vector: " << endl;
-  for (vector<double>::iterator it = begin (v); it != end (v); ++it) {
-      cout << *it << " ";
-    }
+// void printVector(vector<double> v) {
+//   cout << "vector: " << endl;
+//   for (vector<double>::iterator it = begin (v); it != end (v); ++it) {
+//       cout << *it << " ";
+//     }
+// }
+
+void printResult(vector<double> v) {
+  // cout << "closest points: " << endl;
+  cout << v.at(0) << " " << v.at(1) << " " << v.at(2) << " " << v.at(3) << endl;
+  // cout << "comparisons: " << endl;
+  cout << v.at(4) << endl;
 }
 
 int main() {
@@ -30,10 +37,11 @@ int main() {
   }
 
   cpoints.printPoints();
-  cpoints.bruteForce();
-
+  vector<double> brute = cpoints.bruteForce();
   vector<double> dac = cpoints.DAC();
-  printVector(dac);
+
+  printResult(brute);
+  // printResult(dac);
 
   return 0;
 }
