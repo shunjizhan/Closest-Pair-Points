@@ -71,16 +71,21 @@ public:
     return sqrt((p1.x - p2.x) + (p1.y - p2.y));
   }
 
+  /***** brute force *****/
   vector<double> bruteForce() {
+    return bruteForce(this -> allPoints);
+  }
+
+  vector<double> bruteForce(vector<Point> points) {
     vector<double> result = initialResult(); 
     double comparison = 0.0;
     double distance;
     double minDistance = 999999999.9;
     Point temp1, temp2, p1, p2;
 
-    for(vector<Point>::iterator it = allPoints.begin(); it != allPoints.end(); ++it) {
+    for(vector<Point>::iterator it = points.begin(); it != points.end(); ++it) {
       temp1 = *it;
-      for(vector<Point>::iterator it2 = allPoints.begin(); it2 != allPoints.end(); ++it2) {
+      for(vector<Point>::iterator it2 = points.begin(); it2 != points.end(); ++it2) {
         temp2 = *it2;
         distance = getDistance(temp1, temp2);
         comparison += 1.0;
@@ -97,9 +102,10 @@ public:
     return result;
   }
 
+  /***** divide and conqure *****/
   vector<double> DAC() {
     // x0 y0 x1 y1 comparisons 
-    return DAC(allPoints);
+    return DAC(this -> allPoints);
   }
 
   vector<double> DAC(vector<Point> points) {
@@ -108,14 +114,8 @@ public:
     if (points.size() < 2) { 
       cout << "error!"; 
       return result;
-    } else if (points.size() == 2) { 
-      result.clear(); 
-      result.push_back(points.at(0).x);
-      result.push_back(points.at(0).y);
-      result.push_back(points.at(1).x);
-      result.push_back(points.at(1).y);
-      result.push_back(0);
-      return result;
+    } else if (points.size() < 10) { 
+      return bruteForce(points);
     }
 
     double comparison = 0;
