@@ -55,12 +55,12 @@ public:
     this->n = n;
   }
 
-  void printPoints() {
-    for (vector<Point>::iterator it = std::begin (allPoints); it != std::end (allPoints); ++it) {
-      it -> print();
-    }
-    cout << "n = " << n << endl;
-  }
+  // void printPoints() {
+  //   for (vector<Point>::iterator it = std::begin (allPoints); it != std::end (allPoints); ++it) {
+  //     it -> print();
+  //   }
+  //   cout << "n = " << n << endl;
+  // }
   
   void add(Point p) {
     allPoints.push_back(p);

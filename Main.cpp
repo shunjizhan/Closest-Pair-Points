@@ -2,6 +2,7 @@
 #include <sstream>
 #include <fstream>
 #include <string>
+#include <stdlib.h>     /* atof */
 #include "cPoint.h"
 using namespace std;
 
