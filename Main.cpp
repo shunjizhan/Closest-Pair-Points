@@ -22,8 +22,9 @@ int main() {
     cpoints.add(intX, intY);
   }
 
-  cpoints.printPoints();
+  // cpoints.printPoints();
   cpoints.bruteForce();
+  cpoints.DAC();
 
   return 0;
 }

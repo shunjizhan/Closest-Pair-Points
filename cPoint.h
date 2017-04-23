@@ -51,6 +51,7 @@ public:
   }
 
   void bruteForce() {
+    int comparison = 0;
     Point temp1, temp2;
     Point p1;
     Point p2;
@@ -62,6 +63,7 @@ public:
       for(vector<Point>::iterator it2 = allPoints.begin(); it2 != allPoints.end(); ++it2) {
         temp2 = *it2;
         distance = getDistance(temp1, temp2);
+        comparison++;
         if (distance < minDistance && distance != 0) {
           minDistance = distance;
           p1 = temp1;
@@ -72,6 +74,16 @@ public:
 
     cout << "closest points: " << endl;
     cout << p1.x << " " << p1.y << " " << p2.x << " " << p2.y << endl;
+    cout << "comparisons: " << endl;
+    cout << comparison << endl;
+  }
+
+  void DAC() {
+    return DAC(allPoints);
+  }
+
+  void DAC(vector<Point> points) {
+    
   }
 
 };
