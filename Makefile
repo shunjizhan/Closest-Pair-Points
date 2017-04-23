@@ -41,6 +41,21 @@ test5: Main.o
 	./closest-point < tests/test5 > tests/output5
 	diff tests/output5 tests/result5
 
+test6: Main.o
+	${CXX} Main.o -o closest-point
+	./closest-point < tests/testInt1 > tests/outputInt1
+	diff tests/outputInt1 tests/resultInt1
+
+test7: Main.o
+	${CXX} Main.o -o closest-point
+	./closest-point < tests/testInt2 > tests/outputInt2
+	diff tests/outputInt2 tests/resultInt2
+
+test8: Main.o
+	${CXX} Main.o -o closest-point
+	./closest-point < tests/testInt3 > tests/outputInt3
+	diff tests/outputInt3 tests/resultInt3
+
 clean:
 	/bin/rm -f *.o closest-point
 
