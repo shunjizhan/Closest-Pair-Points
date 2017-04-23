@@ -5,6 +5,13 @@
 #include "cPoint.h"
 using namespace std;
 
+void printVector(vector<double> v) {
+  cout << "vector: " << endl;
+  for (vector<double>::iterator it = begin (v); it != end (v); ++it) {
+      cout << *it << " ";
+    }
+}
+
 int main() {
   double n, intX, intY;
   string x, y;
@@ -24,7 +31,9 @@ int main() {
 
   cpoints.printPoints();
   cpoints.bruteForce();
-  cpoints.DAC();
+
+  vector<double> dac = cpoints.DAC();
+  printVector(dac);
 
   return 0;
 }

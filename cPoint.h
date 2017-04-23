@@ -88,10 +88,19 @@ public:
     result.push_back(0.0);
     result.push_back(0.0);
     result.push_back(0.0);
+    result.push_back(0.0);
     result.push_back(-999999999.9);
 
     if (points.size() < 2) { 
       cout << "error!"; 
+      return result;
+    } else if (points.size() == 2) { 
+      result.clear(); 
+      result.push_back(points.at(0).x);
+      result.push_back(points.at(0).y);
+      result.push_back(points.at(1).x);
+      result.push_back(points.at(1).y);
+      result.push_back(0);
       return result;
     }
 
@@ -100,6 +109,7 @@ public:
     double x0, y0, x1, y1;
     double distance;
     double minDistance = 999999999.9;
+
     return result;
   }
 
