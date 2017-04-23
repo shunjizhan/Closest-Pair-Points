@@ -11,7 +11,7 @@ run: Main.o
 
 test: Main.o
 	${CXX} Main.o -o closest-point
-	./closest-point < tests/testInt3
+	./closest-point < tests/testInt1
 
 test1: Main.o
 	${CXX} Main.o -o closest-point
