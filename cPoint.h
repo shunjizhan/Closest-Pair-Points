@@ -4,13 +4,14 @@
 using namespace std;
 
 vector<double> initialResult() {
+  // x0 y0 x1 y1 comparisons minDistance
   vector<double> result;
   result.push_back(0.0);
   result.push_back(0.0);
   result.push_back(0.0);
   result.push_back(0.0);
-  result.push_back(-999999999.9);
   result.push_back(0);
+  result.push_back(9999999999.9);
   return result;
 }
 
@@ -119,7 +120,6 @@ public:
 
   /***** divide and conqure *****/
   vector<double> DAC() {
-    // x0 y0 x1 y1 comparisons minDistance
     return DAC(this -> allPoints);
   }
 
@@ -151,14 +151,60 @@ public:
       vector<double> leftResult = DAC(left);
       vector<double> rightResult = DAC(right);
 
-      double newSum = leftResult[4] + rightResult[4];
-      leftResult[4] = newSum;
-      rightResult[4] = newSum;
-
       double leftMin = leftResult.at(5);
       double rightMin = rightResult.at(5);
+      double min = leftMin < rightMin ? leftMin : rightMin;
 
-      return leftMin > rightMin ? rightResult : leftResult;
+      // check the points in the strip
+      bool returnMiddle = false;
+      vector<double> middleResult = initialResult();
+      double count = 0;
+      double leftBound = halfX - min;
+      double rightBound = halfX + min;
+
+      cout << "leftBound = " << leftBound << endl;
+      cout << "rightBound = " << rightBound << endl;
+
+      for (int m = 0; m < points.size(); m++) {
+        Point p1 = points.at(m);
+        if (p1.x > leftBound && p1.x < rightBound) {
+          for (int n = m + 1; n < points.size(); n++) {
+            Point p2 = points.at(n);
+            if (p2.x > leftBound && p2.x < rightBound) {
+              // now both points are in the strip
+              if (abs(p2.y - p1.y) < min) {
+                double dist = getDistance(p1, p2);
+                count += 1.0;
+                if (dist < min) {
+                  returnMiddle = true;
+                  min = dist;
+                  
+                  middleResult.clear();
+                  middleResult.push_back(p1.x);
+                  middleResult.push_back(p1.y);
+                  middleResult.push_back(p2.x);
+                  middleResult.push_back(p2.y);
+                  middleResult.push_back(0);
+                  middleResult.push_back(min);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      cout << "count = " << count << endl;
+
+      double newSum = leftResult[4] + rightResult[4] + count;
+      leftResult[4] = newSum;
+      rightResult[4] = newSum;
+      middleResult[4] = newSum;
+
+      if (returnMiddle) {
+        return middleResult;
+      } else {
+        return leftMin > rightMin ? rightResult : leftResult;
+      }     
 
     }
   }
